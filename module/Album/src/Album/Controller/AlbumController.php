@@ -11,9 +11,25 @@ use Album\Form\AlbumForm;
 class AlbumController extends AbstractActionController
 {
     protected $albumTable;
+    protected $authservice;
+
+    public function getAuthService()
+    {
+        if (! $this->authservice) {
+            $this->authservice = $this->getServiceLocator()
+                ->get('AuthService');
+        }
+
+        return $this->authservice;
+    }
 
     public function indexAction()
     {
+        //if already login, redirect to success page
+        if ($this->getAuthService()->hasIdentity()){
+            return $this->redirect()->toRoute('album');
+        }
+
         return new ViewModel(array(
             'albums' => $this->getAlbumTable()->fetchAll(),
         ));
