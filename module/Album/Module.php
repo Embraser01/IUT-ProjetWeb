@@ -52,7 +52,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
                     return new TableGateway('z_album', $dbAdapter, null, $resultSetPrototype);
                 },
                 'Album\Model\MyAuthStorage' => function($sm){
-                    return new \Album\Model\MyAuthStorage('zf_tutorial');
+                    return new \Album\Model\MyAuthStorage('Album');
                 },
 
                 'AuthService' => function($sm) {
@@ -61,7 +61,7 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
                     //that password hashed with md5
                     $dbAdapter           = $sm->get('Zend\Db\Adapter\Adapter');
                     $dbTableAuthAdapter  = new DbTableAuthAdapter($dbAdapter,
-                        'z_user','user_name','password', "CONCAT('$this->_salt', sha(?))");
+                        'z_user','user_name','password', "sha(CONCAT(sha(?), '$this->_salt'))" );
 
                     $authService = new AuthenticationService();
                     $authService->setAdapter($dbTableAuthAdapter);
