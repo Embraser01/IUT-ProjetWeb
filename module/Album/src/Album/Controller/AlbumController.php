@@ -25,10 +25,6 @@ class AlbumController extends AbstractActionController
 
     public function indexAction()
     {
-        //if already login, redirect to success page
-        if (!$this->getAuthService()->hasIdentity()){
-            return $this->redirect()->toRoute('login');
-        }
 
         return new ViewModel(array(
             'albums' => $this->getAlbumTable()->fetchAll(),
