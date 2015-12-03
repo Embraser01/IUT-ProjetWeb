@@ -16,9 +16,8 @@ use Zend\Mvc\MvcEvent;
 use Zend\Mvc\Router\Http\RouteMatch;
 
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface {
-    private $_salt = "42jeej42";
-
     protected $whitelist = array("login", "login/process");
+    private $_salt = "42jeej42";
 
     public function onBootstrap(MvcEvent $e) {
         $list = $this->whitelist;
@@ -26,12 +25,13 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface {
         $eventManager = $e->getApplication()->getEventManager();
         $serviceManager = $e->getApplication()->getServiceManager();
 
+
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
 
         $auth = $serviceManager->get('AuthService');
 
-        $eventManager->attach(MvcEvent::EVENT_ROUTE, function ($e) use ($auth,$list) {
+        $eventManager->attach(MvcEvent::EVENT_ROUTE, function ($e) use ($auth, $list) {
             if (!$auth->hasIdentity()) {
                 $name = $e->getRouteMatch()->getMatchedRouteName();
                 if (in_array($name, $list)) {
