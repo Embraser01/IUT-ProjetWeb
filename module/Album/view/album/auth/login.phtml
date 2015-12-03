@@ -1,5 +1,15 @@
 <?php
 //module/Album/view/album/auth/login.phtml
+
+if ($this->messages) {
+
+    echo '<ul class="messages">';
+
+    foreach ($this->messages as $message) echo '<li>' . $message . '</li>';
+
+    echo '</ul>';
+}
+
 $form = $this->form;
 $form->setAttribute('action', $this->url(
     'login/process',
@@ -9,18 +19,43 @@ $form->setAttribute('action', $this->url(
 ));
 $form->prepare();
 
-echo $this->form()->openTag($form);
-echo $this->formRow($form->get('username')) . '<br>';
-echo $this->formRow($form->get('password')) . '<br>';
-echo $this->formRow($form->get('rememberme')) . '<br>';
-echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+$form->get('username')->setAttribute('class', 'mdl-textfield__input');
+$form->get('username')->setAttribute('id', 'user');
 
-if ($this->messages){
-    echo '<ul>';
-    foreach($this->messages as $message)
-    {
-        echo '<li>'.$message.'</li>';
-    }
-    echo '</ul>';
-}
+$form->get('password')->setAttribute('class', 'mdl-textfield__input');
+$form->get('password')->setAttribute('id', 'pwd');
+
+$form->get('rememberme')->setAttribute('class', 'mdl-checkbox__input');
+$form->get('rememberme')->setAttribute('id', 'checkbox');
+?>
+<div class="mdl-card mdl-shadow--16dp centre_card">
+    <div class="mdl-card__supporting-text">
+
+        <?php echo $this->form()->openTag($form); ?>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <?php echo $this->formRow($form->get('username')); ?>
+                <label class="mdl-textfield__label" for="user">Nom d'utilisateur:</label>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <?php echo $this->formRow($form->get('password')); ?>
+                <label class="mdl-textfield__label" for="pwd">Mot de passe:</label>
+            </div>
+
+            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox">
+                <?php echo $this->formRow($form->get('rememberme')); ?>
+                <span class="mdl-checkbox__label">Remember Me</span>
+            </label>
+
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect submit-button" type="submit">
+                Se connecter
+            </button>
+
+        <?php echo $this->form()->closeTag(); ?>
+
+    </div>
+</div>
+<?php
+
+

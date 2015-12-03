@@ -10,10 +10,8 @@ use Zend\Form\Annotation;
 class User
 {
 /**
-* @Annotation\Type("Zend\Form\Element\Text")
 * @Annotation\Required({"required":"true" })
 * @Annotation\Filter({"name":"StripTags"})
-* @Annotation\Options({"label":"Username:"})
 */
 public $username;
 
@@ -21,13 +19,11 @@ public $username;
 * @Annotation\Type("Zend\Form\Element\Password")
 * @Annotation\Required({"required":"true" })
 * @Annotation\Filter({"name":"StripTags"})
-* @Annotation\Options({"label":"Password:"})
 */
 public $password;
 
 /**
 * @Annotation\Type("Zend\Form\Element\Checkbox")
-* @Annotation\Options({"label":"Remember Me ?:"})
 */
 public $rememberme;
 

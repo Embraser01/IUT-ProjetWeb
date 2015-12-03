@@ -1,38 +1,70 @@
-body {
-    padding-top: 60px;
-    padding-bottom: 40px;
-    font-family: Roboto, sans-serif;
+/*
+ * Default ressources
+ * @Embraser01
+ * Under Creative Commons - 2015
+ */
+
+/*=====HEADER=====*/
+
+.mdl-layout__content {
+    padding-top: 30px;
 }
 
-.zf-green {
-    color: #68b604;
+
+/*===== MISC =====*/
+
+html, body {
+    background-color: #E9E9E9;
+    font-family: 'Roboto', sans-serif;
 }
 
-.btn-success {
-  background-color: #57a900;
-  background-image: -moz-linear-gradient(top, #70d900, #57a900);
-  background-image: -ms-linear-gradient(top, #70d900, #57a900);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#70d900), to(#57a900));
-  background-image: -webkit-linear-gradient(top, #70d900, #57a900);
-  background-image: -o-linear-gradient(top, #70d900, #57a900);
-  background-image: linear-gradient(top, #70d900, #57a900);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#70d900', endColorstr='#57a900', GradientType=0);
+.tabulation {
+    padding: 0 30px !important;
 }
 
-.btn-success:hover,
-.btn-success:active,
-.btn-success.active,
-.btn-success.disabled,
-.btn-success[disabled] {
-  background-color: #70d900;
+.no-interaction {
+    cursor: default !important;
 }
 
-.btn-success:active, .btn-success.active {
-  background-color: #57a900;
+.centre_card {
+    margin: 50px auto;
 }
 
-div.container a.brand {
-    background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
-    margin-left: 0;
-    padding: 8px 20px 12px 40px;
+.messages{
+    margin-left: auto;
+    margin-right: auto;
+    list-style-type: none;
+}
+
+.messages > li {
+    text-align: center;
+}
+
+/*===== MENU =====*/
+
+#header-row {
+    padding-left: 30px !important;
+}
+
+/*===== FONT STYLE =====*/
+
+.link-no-style {
+    text-decoration: none;
+}
+
+/*===== STICKY FOOTER =====*/
+
+footer {
+    margin-bottom: auto;
+    padding: 16px 16px !important;
+}
+
+footer ul {
+    margin: auto !important;
+    padding: 0 !important;
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
 }
