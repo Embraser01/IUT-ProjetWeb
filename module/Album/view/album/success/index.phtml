@@ -1,4 +1,12 @@
-Login Success.
-<br />
+<div class="mdl-card mdl-shadow--16dp centre_card">
+    <div class="mdl-card__supporting-text">
 
-<a href="<?php echo $this->url('login/process', array('action'=>'logout')); ?>">Logout</a>
+        <h3>Login success !</h3>
+
+    </div>
+    <a href="<?php echo $this->url('login/process', array('action' => 'logout')); ?>">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+            Logout
+        </button>
+    </a>
+</div>

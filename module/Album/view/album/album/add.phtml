@@ -1,15 +1,40 @@
 <?php
 // module/Album/view/album/album/add.phtml:
 
-$title = 'Add new album';
+$title = 'Ajouter un Album';
 $this->headTitle($title);
-?>
-<h1><?php echo $this->escapeHtml($title); ?></h1>
-<?php
+
 $form->setAttribute('action', $this->url('album', array('action' => 'add')));
 $form->prepare();
 
-echo $this->form()->openTag($form);
-echo $this->formCollection($form);
-echo $this->form()->closeTag();
+$form->get('title')->setAttribute('class', 'mdl-textfield__input');
+$form->get('title')->setAttribute('id', 'title');
 
+$form->get('artist')->setAttribute('class', 'mdl-textfield__input');
+$form->get('artist')->setAttribute('id', 'artist');
+?>
+<div class="mdl-card mdl-shadow--16dp centre_card">
+    <div class="mdl-card__supporting-text">
+
+        <?php echo $this->form()->openTag($form); ?>
+
+        <?php echo $this->formHidden($form->get('id')); ?>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <?php echo $this->formRow($form->get('title')); ?>
+            <label class="mdl-textfield__label" for="title">Nom de l'album:</label>
+        </div>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+            <?php echo $this->formRow($form->get('artist')); ?>
+            <label class="mdl-textfield__label" for="artist">Nom de l'artiste:</label>
+        </div>
+
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect submit-button" type="submit">
+            Ajouter l'album
+        </button>
+
+        <?php echo $this->form()->closeTag(); ?>
+
+    </div>
+</div>

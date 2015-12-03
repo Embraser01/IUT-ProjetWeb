@@ -26,6 +26,7 @@ class AlbumController extends AbstractActionController
     public function indexAction()
     {
 
+        $this->layout()->setVariable('header_title', 'Accueil');
         return new ViewModel(array(
             'albums' => $this->getAlbumTable()->fetchAll(),
         ));
@@ -34,7 +35,6 @@ class AlbumController extends AbstractActionController
     public function addAction()
     {
         $form = new AlbumForm();
-        $form->get('submit')->setValue('Add');
 
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -50,6 +50,7 @@ class AlbumController extends AbstractActionController
                 return $this->redirect()->toRoute('album');
             }
         }
+        $this->layout()->setVariable('header_title', 'Ajouter un Album');
         return array('form' => $form);
     }
 
@@ -75,7 +76,6 @@ class AlbumController extends AbstractActionController
 
         $form  = new AlbumForm();
         $form->bind($album);
-        $form->get('submit')->setAttribute('value', 'Edit');
 
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -89,6 +89,7 @@ class AlbumController extends AbstractActionController
                 return $this->redirect()->toRoute('album');
             }
         }
+        $this->layout()->setVariable('header_title', 'Editer un album');
 
         return array(
             'id' => $id,
@@ -115,6 +116,8 @@ class AlbumController extends AbstractActionController
             // Redirect to list of albums
             return $this->redirect()->toRoute('album');
         }
+
+        $this->layout()->setVariable('header_title', 'Supprimer un album');
 
         return array(
             'id'    => $id,

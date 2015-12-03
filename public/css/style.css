@@ -10,7 +10,6 @@
     padding-top: 30px;
 }
 
-
 /*===== MISC =====*/
 
 html, body {
@@ -30,7 +29,7 @@ html, body {
     margin: 50px auto;
 }
 
-.messages{
+.messages {
     margin-left: auto;
     margin-right: auto;
     list-style-type: none;
@@ -38,6 +37,31 @@ html, body {
 
 .messages > li {
     text-align: center;
+}
+
+/*===== TABLE =====*/
+
+.table-album {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    position: relative;
+}
+.table-album > table {
+    width: 100%;
+}
+
+.table-album > .fab {
+    position: relative;
+    right: 45px;
+    top: 70px;
+    width: 40px;
+    float: right;
+    z-index: 100;
+}
+
+.fab i {
+    color: white;
 }
 
 /*===== MENU =====*/
@@ -50,6 +74,10 @@ html, body {
 
 .link-no-style {
     text-decoration: none;
+}
+
+i {
+    color: #9E9E9E;
 }
 
 /*===== STICKY FOOTER =====*/
