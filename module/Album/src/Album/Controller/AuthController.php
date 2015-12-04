@@ -7,19 +7,9 @@ use Zend\View\Model\ViewModel;
 
 use Album\Model\User;
 
-class AuthController extends AbstractActionController {
+class AuthController extends AbstractController {
     protected $form;
     protected $storage;
-    protected $authservice;
-
-    public function getAuthService() {
-        if (!$this->authservice) {
-            $this->authservice = $this->getServiceLocator()
-                ->get('AuthService');
-        }
-
-        return $this->authservice;
-    }
 
     public function getSessionStorage() {
         if (!$this->storage) {
