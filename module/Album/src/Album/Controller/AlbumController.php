@@ -28,7 +28,7 @@ class AlbumController extends AbstractActionController
 
         $this->layout()->setVariable('header_title', 'Accueil');
         return new ViewModel(array(
-            'albums' => $this->getAlbumTable()->fetchAll(),
+            'albums' => $this->getAlbumTable()->fetchAllByUser($this->getAuthService()->getStorage()->read()['id']),
         ));
     }
 
