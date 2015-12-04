@@ -21,7 +21,6 @@ class AlbumTable {
 
         $resultSet = $this->tableGateway->select(function (Select $select) use ($user_id) {
             $select->where(array('user_id' => $user_id));
-            $select->join('z_user', 'z_user.id = z_album.user_id');
         });
 
         return $resultSet;
@@ -33,7 +32,6 @@ class AlbumTable {
 
         $rowset = $this->tableGateway->select(function (Select $select) use ($user_id, $id) {
             $select->where(array('user_id' => $user_id, 'id' => $id));
-            $select->join('z_user', 'z_user.id = z_album.user_id');
         });
 
 
