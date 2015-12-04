@@ -44,7 +44,7 @@ class AlbumController extends AbstractActionController
 
             if ($form->isValid()) {
                 $album->exchangeArray($form->getData());
-                $this->getAlbumTable()->saveAlbum($album);
+                $this->getAlbumTable()->saveAlbum($album, $this->getAuthService()->getStorage()->read()['id']);
 
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('album');
@@ -66,7 +66,7 @@ class AlbumController extends AbstractActionController
         // Get the Album with the specified id.  An exception is thrown
         // if it cannot be found, in which case go to the index page.
         try {
-            $album = $this->getAlbumTable()->getAlbum($id);
+            $album = $this->getAlbumTable()->getAlbum($id, $this->getAuthService()->getStorage()->read()['id']);
         }
         catch (\Exception $ex) {
             return $this->redirect()->toRoute('album', array(
@@ -83,7 +83,7 @@ class AlbumController extends AbstractActionController
             $form->setData($request->getPost());
 
             if ($form->isValid()) {
-                $this->getAlbumTable()->saveAlbum($album);
+                $this->getAlbumTable()->saveAlbum($album, $this->getAuthService()->getStorage()->read()['id']);
 
                 // Redirect to list of albums
                 return $this->redirect()->toRoute('album');
@@ -110,7 +110,7 @@ class AlbumController extends AbstractActionController
 
             if ($del == 'Yes') {
                 $id = (int) $request->getPost('id');
-                $this->getAlbumTable()->deleteAlbum($id);
+                $this->getAlbumTable()->deleteAlbum($id,$this->getAuthService()->getStorage()->read()['id'] );
             }
 
             // Redirect to list of albums
